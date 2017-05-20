@@ -1,0 +1,12 @@
+[package]
+authors = ["panicbit <panicbit.dev@gmail.com>"]
+name = "late"
+version = "0.1.0"
+
+[dependencies]
+itertools = "0.6.0"
+smallvec = "0.3.3"
+
+[dependencies.sdl2]
+features = ["gfx"]
+version = "0.30.0"
