@@ -15,6 +15,9 @@ pub const SCREEN_WIDTH: usize = 1280;
 pub const SCREEN_HEIGHT: usize = 720;
 
 mod tile;
+mod ptr_table;
+// mod room;
+
 use tile::Tile;
 
 fn main() {
@@ -41,9 +44,11 @@ fn main() {
             match event {
                 Event::Quit {..} => break 'main,
                   Event::KeyDown { keycode: Some(Keycode::Down),..}
-                | Event::KeyDown { keycode: Some(Keycode::Right),..} => offset = offset.saturating_add(SCALE_FACTOR*8),
+                | Event::KeyDown { keycode: Some(Keycode::Right),..}
+                | Event::MouseWheel { y: -1, .. } => offset = offset.saturating_add(SCALE_FACTOR*8),
                   Event::KeyDown { keycode: Some(Keycode::Up),..}
-                | Event::KeyDown { keycode: Some(Keycode::Left),..} => offset = offset.saturating_sub(SCALE_FACTOR*8),
+                | Event::KeyDown { keycode: Some(Keycode::Left),..}
+                | Event::MouseWheel { y: 1, .. } => offset = offset.saturating_sub(SCALE_FACTOR*8),
                 _ => {}
             }
         }

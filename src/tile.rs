@@ -54,7 +54,7 @@ impl Tile {
             let source = tile.0.iter();
 
             for (pallet_index, target) in source.zip(target) {
-                let color = LINK_PALLET.get_color(*pallet_index);
+                let color = BGB_PALLET.get_color(*pallet_index);
                 target[0] = color.r;
                 target[1] = color.g;
                 target[2] = color.b;
